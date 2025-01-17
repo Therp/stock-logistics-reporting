@@ -551,12 +551,14 @@
                                                                 Mode d'emballage
                                                                 <br />
                                                                 Method of packing
-                                                            <t t-if="o.has_packages">
+                                                            <t
+                                                                    t-if="o.effective_package_type"
+                                                                >
                                                                     <div
                                                                         class="text-bigger text-dark mt-1 ml-2"
                                                                     >
                                                                         <span
-                                                                            t-esc="', '.join(o.move_line_ids.mapped('result_package_id.packaging_id.name'))"
+                                                                            t-field="o.effective_package_type"
                                                                         />
                                                                     </div>
                                                                 </t>
@@ -624,15 +626,17 @@
                                                                 <br />
                                                                 Poids brut Kg.
                                                                 <br />
-                                                                Gross weight in Kg
+                                                                Gross weight in Kgo.weight
                                                                 <t
-                                                                    t-if="o.shipping_weight"
-                                                                >
+                                                                    t-set="weight"
+                                                                    t-value="o.shipping_weight or o.weight"
+                                                                />
+                                                                <t t-if="weight">
                                                                     <div
                                                                         class="text-bigger text-dark mt-1 ml-2"
                                                                     >
                                                                         <span
-                                                                            t-field="o.shipping_weight"
+                                                                            t-esc="weight"
                                                                         />
                                                                     </div>
                                                                 </t>
