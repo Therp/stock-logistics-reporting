@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']/.." position="inside">
                 <field name="cmr_code" placeholder="00000" />
+                <field name="nature_of_goods" />
             </xpath>
         </field>
     </record>

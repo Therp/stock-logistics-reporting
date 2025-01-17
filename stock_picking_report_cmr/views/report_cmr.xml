@@ -302,9 +302,15 @@
                                                     <br />
                                                     Carrier (name, address, country)
                                                     <div
+                                                        t-if="o.carrier_id.partner_id"
                                                         class="text-bigger text-dark mt-1 ml-2"
-                                                        t-field="res_company.partner_id"
+                                                        t-field="o.carrier_id.partner_id"
                                                         t-options="{'widget': 'contact', 'fields': ['name', 'address'], 'no_marker': True}"
+                                                    />
+                                                    <div
+                                                        t-if="not o.carrier_id.partner_id"
+                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                        t-field="o.carrier_id.name"
                                                     />
                                                 </td>
                                             </tr>
@@ -333,7 +339,7 @@
                                                         <div
                                                             class="text-bigger text-dark mt-1 ml-2"
                                                             t-field="o.partner_id"
-                                                            t-options="{'widget': 'contact', 'fields': ['name']}"
+                                                            t-options="{'widget': 'contact', 'fields': ['city','country']}"
                                                         />
                                                     </t>
                                                 </td>
@@ -489,6 +495,15 @@
                                                                 Marques et numéros
                                                                 <br />
                                                                 Marks and Nos
+                                                                <t t-if="o.origin">
+                                                                    <div
+                                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                                    >
+                                                                        <span
+                                                                            t-field="o.origin"
+                                                                        />
+                                                                    </div>
+                                                                </t>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -507,6 +522,17 @@
                                                                 Nombre des colls
                                                                 <br />
                                                                 Number of packages
+                                                                <t
+                                                                    t-if="o.number_of_packages"
+                                                                >
+                                                                    <div
+                                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                                    >
+                                                                        <span
+                                                                            t-field="o.number_of_packages"
+                                                                        />
+                                                                    </div>
+                                                                </t>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -525,6 +551,15 @@
                                                                 Mode d'emballage
                                                                 <br />
                                                                 Method of packing
+                                                            <t t-if="o.has_packages">
+                                                                    <div
+                                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                                    >
+                                                                        <span
+                                                                            t-esc="', '.join(o.move_line_ids.mapped('result_package_id.packaging_id.name'))"
+                                                                        />
+                                                                    </div>
+                                                                </t>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -545,6 +580,15 @@
                                                                 marchandise
                                                                 <br />
                                                                 Nature of the goods
+                                                            <t t-if="o.nature_of_goods">
+                                                                    <div
+                                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                                    >
+                                                                        <span
+                                                                            t-field="o.nature_of_goods"
+                                                                        />
+                                                                    </div>
+                                                                </t>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -581,6 +625,17 @@
                                                                 Poids brut Kg.
                                                                 <br />
                                                                 Gross weight in Kg
+                                                                <t
+                                                                    t-if="o.shipping_weight"
+                                                                >
+                                                                    <div
+                                                                        class="text-bigger text-dark mt-1 ml-2"
+                                                                    >
+                                                                        <span
+                                                                            t-field="o.shipping_weight"
+                                                                        />
+                                                                    </div>
+                                                                </t>
                                                             </td>
                                                         </tr>
                                                     </table>

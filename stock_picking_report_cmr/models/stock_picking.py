@@ -9,3 +9,4 @@ class StockPicking(models.Model):
         default=0,
         help="Code needed for CMR Report",
     )
+    nature_of_goods = fields.Char()
