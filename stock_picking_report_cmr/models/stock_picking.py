@@ -17,6 +17,6 @@ class StockPicking(models.Model):
             if hasattr(picking, "package_type"):
                 picking.effective_package_type = picking.package_type
                 continue
-            picking.effective_package_type = picking.move_line_ids.mapped(
-                "result_package_id.packaging_id.name"
+            picking.effective_package_type = ", ".join(
+                picking.move_line_ids.mapped("result_package_id.packaging_id.name")
             )
