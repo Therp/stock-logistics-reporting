@@ -551,17 +551,13 @@
                                                                 Mode d'emballage
                                                                 <br />
                                                                 Method of packing
-                                                            <t
-                                                                    t-if="o.effective_package_type"
+                                                                <div
+                                                                    class="text-bigger text-dark mt-1 ml-2"
                                                                 >
-                                                                    <div
-                                                                        class="text-bigger text-dark mt-1 ml-2"
-                                                                    >
-                                                                        <span
-                                                                            t-field="o.effective_package_type"
-                                                                        />
-                                                                    </div>
-                                                                </t>
+                                                                    <span
+                                                                        t-field="o.effective_package_type"
+                                                                    />
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     </table>
