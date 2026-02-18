@@ -398,20 +398,14 @@
                                                     <t
                                                         t-if="o.picking_type_id.warehouse_id and o.picking_type_id.warehouse_id.partner_id"
                                                     >
-                                                        <div
-                                                            class="text-bigger text-dark mt-1 ml-2"
-                                                        >
-                                                            <span
-                                                                t-field="o.picking_type_id.warehouse_id.partner_id.name"
-                                                            />
-                                                            -
-                                                            <t t-if="o.date_done">
-                                                                <span
-                                                                    t-field="o.date_done"
-                                                                    t-options="{'widget': 'date'}"
-                                                                />
-                                                            </t>
-                                                        </div>
+                                                        <div class="text-bigger text-dark mt-1 ml-2">
+    <t t-set="p" t-value="o.picking_type_id.warehouse_id.partner_id"/>
+    <span t-esc="', '.join(filter(None, [
+        p.city,
+        p.country_id.name if p.country_id else ''
+    ]))"/>
+</div>
+
                                                     </t>
                                                 </td>
                                             </tr>
@@ -578,15 +572,9 @@
                                                                 marchandise
                                                                 <br />
                                                                 Nature of the goods
-                                                            <t t-if="o.nature_of_goods">
-                                                                    <div
-                                                                        class="text-bigger text-dark mt-1 ml-2"
-                                                                    >
-                                                                        <span
-                                                                            t-field="o.nature_of_goods"
-                                                                        />
-                                                                    </div>
-                                                                </t>
+                                                            <div class="text-bigger text-dark mt-1 ml-2">
+    Fos Parts
+</div>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -623,19 +611,7 @@
                                                                 Poids brut Kg.
                                                                 <br />
                                                                 Gross weight in Kgo.weight
-                                                                <t
-                                                                    t-set="weight"
-                                                                    t-value="o.shipping_weight or o.weight"
-                                                                />
-                                                                <t t-if="weight">
-                                                                    <div
-                                                                        class="text-bigger text-dark mt-1 ml-2"
-                                                                    >
-                                                                        <span
-                                                                            t-esc="weight"
-                                                                        />
-                                                                    </div>
-                                                                </t>
+                                                                <div class="text-bigger text-dark mt-1 ml-2"></div>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -891,6 +867,9 @@
                                                     <br />
                                                     Instructions as tu payment for
                                                     carriage
+                                                    <div class="text-bigger text-dark mt-1 ml-2">
+        Fragile
+    </div>
                                                 </td>
                                             </tr>
                                             <tr>
