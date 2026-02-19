@@ -53,6 +53,20 @@
                         margin-left: -10mm;
                         margin-top: -25mm;
                     }
+                    /* 
+                       Tune these two values (mm) after comparing against the scan.
+                       Negative dx = move left, positive dx = move right.
+                       Positive dy = move down, negative dy = move up.
+                    */
+                    :root{
+                        --cmr-dx: 0mm;
+                        --cmr-dy: 0mm;
+                    }
+                    .page{
+                        transform: translate(var(--cmr-dx), var(--cmr-dy));
+                        transform-origin: top left;
+                    }
+
                 </style>
                 <div class="page">
                     <div class="row">
@@ -678,6 +692,9 @@
                                                     Instructions de l'expediteur
                                                     <br />
                                                     Sender's instructions
+                                                    <div class="text-bigger text-dark mt-1 f-13-senders-instructions">
+                                                        Fragile
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -867,9 +884,6 @@
                                                     <br />
                                                     Instructions as tu payment for
                                                     carriage
-                                                    <div class="text-bigger text-dark mt-1 ml-2">
-        Fragile
-    </div>
                                                 </td>
                                             </tr>
                                             <tr>
